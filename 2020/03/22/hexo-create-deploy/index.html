@@ -139,7 +139,7 @@
 <meta property="og:description" content="當會使用 Makeup Language 來進行文件的書寫後，利用hexo 平台產生網頁並 deploy 到 Github Page 的整合，讓您以最快速的方式開始寫作博客。 利用 Hexo 架站 除存在 github Page 中 Hexo 架站與基本架構 hexo theme.schema “NexT.Pisces” v5.1.4   Github Page (github.io) HTML">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-03-22T07:34:46.000Z">
-<meta property="article:modified_time" content="2020-03-24T13:26:27.000Z">
+<meta property="article:modified_time" content="2020-03-24T13:30:38.000Z">
 <meta property="article:author" content="Hawk Chou">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="NexT">
@@ -406,7 +406,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-03-24T21:26:27+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-03-24T21:30:38+08:00">
                 2020-03-24
               </time>
             
@@ -443,6 +443,11 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -501,7 +506,7 @@
 <p>註冊 guthub.com 帳號 目前使用 hawkchou14</p>
 <p>在 github.com 註冊完成後，新增一個 repository 名稱為 hawkchou14.github.io (後面一定要加 .github.io, 作為 github PAGE 識別使用)</p>
 <p>安裝完成後，修改 _config.yml “Hexo 基本架構參數”</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: PurpleStar Diary</span><br><span class="line">subtitle: <span class="string">'Life and Work and Others...'</span></span><br><span class="line">description: <span class="string">'記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，一滴一滴地擠出了生命之中...'</span></span><br><span class="line">keywords:</span><br><span class="line">author: Hawk Chou</span><br><span class="line">language: zh-TW</span><br><span class="line">timezone: <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line">url: https://hawkchou14.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">...</span><br><span class="line">theme: next 		<span class="comment"># 設定為 next theme</span></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">'git'</span></span><br><span class="line">  repo:</span><br><span class="line">    github: git@github.com:hawkchou14/hawkchou14.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: PurpleStar Diary</span><br><span class="line">subtitle: <span class="string">'Life and Work and Others...'</span></span><br><span class="line">description: <span class="string">'記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，一滴一滴地擠出了生命之中...'</span></span><br><span class="line">keywords:</span><br><span class="line">author: Hawk Chou</span><br><span class="line">language: zh-TW</span><br><span class="line">timezone: <span class="string">'Asia/Taipei'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line">url: https://hawkchou14.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">...</span><br><span class="line">theme: next 		<span class="comment"># 設定為 next theme</span></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">'git'</span></span><br><span class="line">  repo:</span><br><span class="line">    github: git@github.com:hawkchou14/hawkchou14.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
 <h2 id="修改-theme-相關參數"><a href="#修改-theme-相關參數" class="headerlink" title="修改 theme 相關參數"></a>修改 theme 相關參數</h2><p>很多與 Theme 相關的參數需要根據需求調整，須小心調整相關參數</p>
 <p>修改檔案 theme/next/_config.yml</p>
@@ -520,6 +525,16 @@
 <p>此時可以利用瀏覽器開啟 URL: [<a href="https://hawkchou14.github.io/]">https://hawkchou14.github.io/]</a> 來進行瀏覽。</p>
 
       
+    </div>
+    <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #555;font-size:16px;">-------------本文结束 <i class="fa fa-paw"></i> 感謝您的閱讀-------------</div>
+    
+</div>
+
+    
     </div>
     
     
@@ -677,6 +692,16 @@
           
 
           
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hawkchou14" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
 
           
           
@@ -762,6 +787,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 

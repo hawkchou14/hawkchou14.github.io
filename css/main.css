@@ -1102,13 +1102,13 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: normal;
   font-family: 'Handlee', 'Noto Serif TC', "PingFang TC", "Microsoft YaHei", "Noto Serif TC", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 18px;
   color: #ddd;
 }
 .use-motion .brand {
@@ -1429,7 +1429,7 @@ pre .javascript .function {
 .posts-expand .post-title {
   text-align: center;
   word-break: break-word;
-  font-weight: 400;
+  font-weight: 600;
 }
 .posts-expand .post-title-link {
   display: inline-block;
@@ -1725,7 +1725,7 @@ pre .javascript .function {
 .site-description {
   margin-top: 0;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   color: #999;
 }
 .site-state {
@@ -1796,7 +1796,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16ff22;
+  background: #634996;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3212,4 +3212,11 @@ p#div-border-top-purple {
   border-top-width: 5px;
   border-radius: 3px;
   border-top-color: #9954bb;
+}
+.post {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 25px;
+  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
+  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
