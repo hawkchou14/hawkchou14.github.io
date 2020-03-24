@@ -4,14 +4,35 @@
 
     <url>
         <loc>https://hawkchou14.github.io/tags/github/</loc>
-        <lastmod>2020-03-22T16:39:35.000Z</lastmod>
+        <lastmod>2020-03-24T13:26:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/NexT/</loc>
+        <lastmod>2020-03-24T13:26:27.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://hawkchou14.github.io/tags/hexo/</loc>
-        <lastmod>2020-03-22T16:39:35.000Z</lastmod>
+        <lastmod>2020-03-24T13:26:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/font/</loc>
+        <lastmod>2020-03-24T01:53:59.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/google/</loc>
+        <lastmod>2020-03-24T01:53:59.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
