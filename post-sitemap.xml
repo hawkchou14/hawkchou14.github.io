@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>https://hawkchou14.github.io/2020/03/24/hexo-body-width/</loc>
-        <lastmod>2020-03-26T22:58:41.000Z</lastmod>
+        <loc>https://hawkchou14.github.io/2020/03/27/2020-03-26/</loc>
+        <lastmod>2020-03-26T23:30:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,15 @@
 
     <url>
         <loc>https://hawkchou14.github.io/2020/03/22/hexo-create-deploy/</loc>
-        <lastmod>2020-03-26T22:48:50.000Z</lastmod>
+        <lastmod>2020-03-26T23:26:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/03/24/hexo-body-width/</loc>
+        <lastmod>2020-03-26T22:58:41.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
