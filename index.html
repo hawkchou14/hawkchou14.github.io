@@ -318,10 +318,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-03-24 07:23:47 / 修改時間：19:30:02" itemprop="dateCreated datePublished" datetime="2020-03-24T07:23:47+08:00">2020-03-24</time>
+              <time title="創建時間：2020-03-24 07:23:47" itemprop="dateCreated datePublished" datetime="2020-03-24T07:23:47+08:00">2020-03-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-27 06:58:41" itemprop="dateModified" datetime="2020-03-27T06:58:41+08:00">2020-03-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -358,22 +364,15 @@
 
       
           <p>next主題配置中，文章的兩側留白太多，每一行的文字太少，尤其是將字放大後，每行的字只剩下幾個，閱讀起來的感覺並不好。可通過修改next主題中頁面寬度來解決。</p>
-<h2 id="方法一-修改-post-expand-styl-與-base-styl"><a href="#方法一-修改-post-expand-styl-與-base-styl" class="headerlink" title="方法一 : 修改 post-expand.styl 與 base.styl"></a>方法一 : 修改 post-expand.styl 與 base.styl</h2><p>1.打開<code>\themes\next\source\css\_common\components\post\post-expand.styl</code>，找到: </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@media (max-width: 767px)</span><br></pre></td></tr></table></figure>
-<p>修改為:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@media (max-width: 1080px)</span><br></pre></td></tr></table></figure>
-
-<p>2.打開 <code>\themes\next\source\css\_variables\base.styl</code> 文件，找到:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$main</span>-desktop                   = 960px</span><br><span class="line"><span class="variable">$main</span>-desktop-large             = 1200px</span><br><span class="line"><span class="variable">$content</span>-desktop                = 700px</span><br></pre></td></tr></table></figure>
-
-<p>修改為:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$main</span>-desktop                   = 1080px</span><br><span class="line"><span class="variable">$main</span>-desktop-large             = 1200px</span><br><span class="line"><span class="variable">$content</span>-desktop                = 810px</span><br></pre></td></tr></table></figure>
-
-<p>之後再重新生產，頁面留白就會由 767px 變為1080px 。</p>
-<h2 id="方法二-手動調整樣式-個人的設定"><a href="#方法二-手動調整樣式-個人的設定" class="headerlink" title="方法二: 手動調整樣式 (個人的設定)"></a>方法二: 手動調整樣式 (個人的設定)</h2><p>手動調整樣式，可以得到較好的效果, 先確認使用的 schemes 為 Picses，或根據自己的設定調整。<br>‘\themes\next\source/css/_schemes/Picses/_layout.styl’ 文件末尾加入樣式設定如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 以下為新增代碼！！修改post寬度</span><br><span class="line">header&#123; width: 80% !important; &#125;</span><br><span class="line">header.post-header &#123;</span><br><span class="line">  width: auto !important;</span><br><span class="line">&#125;</span><br><span class="line">.container .main-inner &#123; width: 80%; &#125;</span><br><span class="line">.content-wrap &#123; width: calc(100% - 260px); &#125;</span><br><span class="line"></span><br><span class="line">.header &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.container .main-inner &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: 100% !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: 100% !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Reference:<br><a href="https://ihaoming.top/archives/9a935f57.html" target="_blank" rel="noopener">法一</a><br><a href="https://sluggishpj.github.io/blog/2017/10/14/修改NexTPisces主题样式/" target="_blank" rel="noopener">法二</a></p>
-
+<p>後來升級到 NexT 7.x 版後發現只需要方法一的第二項 Layout Size 即可 </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/24/hexo-body-width/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
