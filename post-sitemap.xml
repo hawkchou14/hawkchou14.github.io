@@ -8,6 +8,46 @@
     </url>
 
     <url>
+        <loc>https://hawkchou14.github.io/2020/03/29/linux-ntp/</loc>
+        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/03/29/2020-03-29/</loc>
+        <lastmod>2020-03-29T04:33:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/03/28/2020-03-28/</loc>
+        <lastmod>2020-03-29T04:28:15.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/03/29/tsm-tcp-tune/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/03/28/2020-03-28-1/</loc>
+        <lastmod>2020-03-28T11:30:09.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/2020/03/24/hexo-external-fonts/</loc>
         <lastmod>2020-03-27T23:59:49.000Z</lastmod>
         <changefreq>weekly</changefreq>

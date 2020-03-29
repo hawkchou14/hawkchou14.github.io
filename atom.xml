@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hawkchou14.github.io/"/>
-  <updated>2020-03-27T23:24:25.000Z</updated>
+  <updated>2020-03-29T07:46:50.000Z</updated>
   <id>https://hawkchou14.github.io/</id>
   
   <author>
@@ -15,6 +15,131 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux-ntp</title>
+    <link href="https://hawkchou14.github.io/2020/03/29/linux-ntp/"/>
+    <id>https://hawkchou14.github.io/2020/03/29/linux-ntp/</id>
+    <published>2020-03-29T07:27:34.000Z</published>
+    <updated>2020-03-29T07:46:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在網際網路中，系統上線前，最重要的作業莫過於對時了：<br>Linux 的設定中，在 CentOS7 版本之後採用 chrony 為 NTP 的工具<br>在安裝完 chrony package 後即可使用 NTP 的工具</p><a id="more"></a><h2 id="NTP-Server-chronyd"><a href="#NTP-Server-chronyd" class="headerlink" title="NTP Server chronyd"></a>NTP Server chronyd</h2><p>設定 NTP server 使用 chronyd 服務，設定檔案為 <code>/etc/chrony.conf</code><br>可以編輯此檔案，將檔案內的 server xxxx 修改為自己的 server 即可在內網使用</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Use public servers from the pool.ntp.org project.</span></span><br><span class="line"><span class="comment"># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span></span><br><span class="line">server 0.centos.pool.ntp.org iburst</span><br><span class="line">server 1.centos.pool.ntp.org iburst</span><br><span class="line">server 2.centos.pool.ntp.org iburst</span><br><span class="line">server 3.centos.pool.ntp.org iburst</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>修改為</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">server &lt;內網中的 NTP Server1&gt; iburst</span><br><span class="line">server &lt;內網中的 NTP Server2&gt; iburst</span><br><span class="line">server &lt;內網中的 NTP Server3&gt; iburst</span><br></pre></td></tr></table></figure><p>建議設定三部的 NTP 主機，NTP 的架構可以由主要的 core switch 來負責，有時間時再來討論。<br>修改完成後重新啟動 chrony daemon (chronyd.service) 即可</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> chronyd.service</span><br><span class="line">systemctl start chronyd.service</span><br><span class="line">systemctl status chronyd.service</span><br></pre></td></tr></table></figure><h2 id="NTP-Client-chronyc"><a href="#NTP-Client-chronyc" class="headerlink" title="NTP Client chronyc"></a>NTP Client chronyc</h2><p>在 Linux 中，相同程式碼如果後綴的字元為 <code>c</code> 的指令常常是 command line 的指令。<br>例如在 chrony 套件中 chronyc 即是 command line 的指令<br>後綴的字元為 <code>d</code> 的指令通常為服務 <code>daemon</code> 如 chronyd</p><h3 id="檢查-sources"><a href="#檢查-sources" class="headerlink" title="檢查 sources"></a>檢查 sources</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@nagios code]<span class="comment"># chronyc sources</span></span><br><span class="line">210 Number of sources = 4</span><br><span class="line">MS Name/IP address         Stratum Poll Reach LastRx Last sample               </span><br><span class="line">===============================================================================</span><br><span class="line">^- static.80.158.217.95.cli&gt;     2   6   177    33  +1205us[+1205us] +/-  161ms</span><br><span class="line">^+ static.home.twn.sciurida&gt;     2   6   177    33  -2235us[+4055us] +/-   18ms</span><br><span class="line">^- time.cloudflare.com           3   6   177    34  +6601us[  +13ms] +/-   80ms</span><br><span class="line">^* bom-gw.tipsy.coffee           2   6   177    33  +1593us[+3613us] +/- 7125us</span><br></pre></td></tr></table></figure><h3 id="檢查-tracking"><a href="#檢查-tracking" class="headerlink" title="檢查 tracking"></a>檢查 tracking</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@nagios code]<span class="comment"># chronyc tracking</span></span><br><span class="line">Reference ID    : 76A3AA06 (bom-gw.tipsy.coffee)</span><br><span class="line">Stratum         : 3</span><br><span class="line">Ref time (UTC)  : Sun Mar 29 07:23:55 2020</span><br><span class="line">System time     : 0.000000044 seconds fast of NTP time</span><br><span class="line">Last offset     : +0.002020220 seconds</span><br><span class="line">RMS offset      : 0.004714346 seconds</span><br><span class="line">Frequency       : 19.275 ppm slow</span><br><span class="line">Residual freq   : +0.613 ppm</span><br><span class="line">Skew            : 31.625 ppm</span><br><span class="line">Root delay      : 0.012406345 seconds</span><br><span class="line">Root dispersion : 0.003200516 seconds</span><br><span class="line">Update interval : 0.2 seconds</span><br><span class="line">Leap status     : Normal</span><br></pre></td></tr></table></figure><h3 id="手動對時"><a href="#手動對時" class="headerlink" title="手動對時"></a>手動對時</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@nagios code]<span class="comment"># chronyc makestep</span></span><br><span class="line">200 OK</span><br></pre></td></tr></table></figure><p>對時完成後再檢查一下 tracking 看看對時後的結果:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@nagios code]<span class="comment"># chronyc tracking</span></span><br><span class="line">Reference ID    : 76A3AA06 (bom-gw.tipsy.coffee)</span><br><span class="line">Stratum         : 3</span><br><span class="line">Ref time (UTC)  : Sun Mar 29 07:26:04 2020</span><br><span class="line">System time     : 0.000000000 seconds slow of NTP time</span><br><span class="line">Last offset     : +0.001181512 seconds</span><br><span class="line">RMS offset      : 0.004281717 seconds</span><br><span class="line">Frequency       : 10.007 ppm slow</span><br><span class="line">Residual freq   : +0.424 ppm</span><br><span class="line">Skew            : 16.726 ppm</span><br><span class="line">Root delay      : 0.012622609 seconds</span><br><span class="line">Root dispersion : 0.002506560 seconds</span><br><span class="line">Update interval : 65.0 seconds</span><br><span class="line">Leap status     : Normal</span><br><span class="line">[root@nagios code]<span class="comment">#</span></span><br></pre></td></tr></table></figure><h3 id="source-state-對時主機的狀態"><a href="#source-state-對時主機的狀態" class="headerlink" title="source state 對時主機的狀態"></a>source state 對時主機的狀態</h3><p>列出 NTP 對時主機的狀態</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@nagios code]<span class="comment"># chronyc sourcestate</span></span><br><span class="line">210 Number of sources = 4</span><br><span class="line">Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev</span><br><span class="line">==============================================================================</span><br><span class="line">static.80.158.217.95.cli&gt;  10   5  1165     +0.252      0.137   +529us    32us</span><br><span class="line">static.home.twn.sciurida&gt;   8   5   453     -3.604     15.916  -1453us   984us</span><br><span class="line">time.cloudflare.com        22  12   23m     -0.983      2.546  +5261us  1288us</span><br><span class="line">bom-gw.tipsy.coffee         9   7   649     +0.002      0.120  +1028ns    15us</span><br><span class="line">[root@nagios code]<span class="comment">#</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在網際網路中，系統上線前，最重要的作業莫過於對時了：&lt;br&gt;Linux 的設定中，在 CentOS7 版本之後採用 chrony 為 NTP 的工具&lt;br&gt;在安裝完 chrony package 後即可使用 NTP 的工具&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://hawkchou14.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://hawkchou14.github.io/tags/Linux/"/>
+    
+      <category term="ntp" scheme="https://hawkchou14.github.io/tags/ntp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020-03-29</title>
+    <link href="https://hawkchou14.github.io/2020/03/29/2020-03-29/"/>
+    <id>https://hawkchou14.github.io/2020/03/29/2020-03-29/</id>
+    <published>2020-03-29T04:28:32.000Z</published>
+    <updated>2020-03-29T04:33:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote class="blockquote-center">            <p><a href="#整理">整理</a></p>          </blockquote><a id="more"></a><h2 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h2><p>美好的星期日，需要發一些時間整理</p><ul><li>整理心情</li><li>整理環境</li><li>整理身體<br>但最後還是先整理工作的需求，先完成昨天未完的演練，以及要幫忙處理的系統。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;
+            &lt;p&gt;&lt;a href=&quot;#整理&quot;&gt;整理&lt;/a&gt;&lt;/p&gt;
+
+          &lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="https://hawkchou14.github.io/categories/Diary/"/>
+    
+    
+      <category term="diary" scheme="https://hawkchou14.github.io/tags/diary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tsm-tcp-tune</title>
+    <link href="https://hawkchou14.github.io/2020/03/29/tsm-tcp-tune/"/>
+    <id>https://hawkchou14.github.io/2020/03/29/tsm-tcp-tune/</id>
+    <published>2020-03-29T02:12:25.000Z</published>
+    <updated>2020-03-29T02:17:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Sometime, we can not figure out what kind of parameters perform better,<br>There are several paramters in TSM (Spectrue Protect) does impact system performace.</p><a id="more"></a><p>for example: </p><h2 id="For-the-TCPNODELAY-option-use-the-default-value-of-YES"><a href="#For-the-TCPNODELAY-option-use-the-default-value-of-YES" class="headerlink" title="For the TCPNODELAY option, use the default value of YES."></a>For the TCPNODELAY option, use the default value of YES.</h2><p>This setting disables the Nagle algorithm and allows packets that are smaller than the MTU size to be immediately sent.</p><blockquote><p>Windows systems have a TCP auto-tuning feature that monitors session transfer statistics and then adjusts the receive window as needed for optimal performance. For IBM Spectrum Protect servers and clients that run on these systems, you might consider setting the IBM Spectrum Protect TCPWINDOWSIZE option to 0 to use auto-tuning.</p></blockquote><h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>The TCP auto-tuning feature is enabled by default on some versions of Windows, and disabled by default on others. If you intend to use auto-tuning, ensure that it is enabled for the Windows system.</p><blockquote><p>Always monitor operations after such changes to verify that the performance is not degraded.</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sometime, we can not figure out what kind of parameters perform better,&lt;br&gt;There are several paramters in TSM (Spectrue Protect) does impact system performace.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Middleware" scheme="https://hawkchou14.github.io/categories/Middleware/"/>
+    
+      <category term="TSM" scheme="https://hawkchou14.github.io/categories/Middleware/TSM/"/>
+    
+    
+      <category term="tsm" scheme="https://hawkchou14.github.io/tags/tsm/"/>
+    
+      <category term="tcp" scheme="https://hawkchou14.github.io/tags/tcp/"/>
+    
+      <category term="tuning" scheme="https://hawkchou14.github.io/tags/tuning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020-03-28</title>
+    <link href="https://hawkchou14.github.io/2020/03/28/2020-03-28-1/"/>
+    <id>https://hawkchou14.github.io/2020/03/28/2020-03-28-1/</id>
+    <published>2020-03-28T11:30:09.000Z</published>
+    <updated>2020-03-28T11:30:09.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="https://hawkchou14.github.io/categories/Diary/"/>
+    
+    
+      <category term="diary" scheme="https://hawkchou14.github.io/tags/diary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2020-03-28</title>
+    <link href="https://hawkchou14.github.io/2020/03/28/2020-03-28/"/>
+    <id>https://hawkchou14.github.io/2020/03/28/2020-03-28/</id>
+    <published>2020-03-28T11:26:01.000Z</published>
+    <updated>2020-03-29T04:28:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote class="blockquote-center">            <p><a href="#演練2">演練2</a></p>          </blockquote><a id="more"></a><h2 id="演練2"><a href="#演練2" class="headerlink" title="演練2"></a>演練2</h2><p>協助客戶進行一次演練，遇到一些狀況，也就這樣忙了一整天，<br>還將一位好友拖下水，處理了好一陣子。<br>最後總算完成了還原。還有另外一個明天繼續。<br>雖然花了些時間，總算搞懂了一些觀念。<br>問題一 速度問題，看起來與平台間採用的通信演算法有關<br><a href="https://www.extrahop.com/company/blog/2016/tcp-nodelay-nagle-quickack-best-practices/" target="_blank" rel="noopener">Nagle‘s Algorithm, 與Delayed ACK 間的衝突有關</a></p><p>Reference for AIX:<a href="https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/performance/tcp_nodelay_tcp_nagle_limit.html" target="_blank" rel="noopener">The tcp_nodelay or tcp_nagle_limit options</a><br><a href="https://www.ibm.com/support/knowledgecenter/en/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/install/platformrec_one.htm" target="_blank" rel="noopener">Disabling TCP-delayed acknowledgments on AIX systems</a><br><a href="https://www.ibm.com/support/pages/aix-how-fast-my-nic" target="_blank" rel="noopener">In AIX, how fast is my NIC?</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote class=&quot;blockquote-center&quot;&gt;
+            &lt;p&gt;&lt;a href=&quot;#演練2&quot;&gt;演練2&lt;/a&gt;&lt;/p&gt;
+
+          &lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Diary" scheme="https://hawkchou14.github.io/categories/Diary/"/>
+    
+    
+      <category term="diary" scheme="https://hawkchou14.github.io/tags/diary/"/>
+    
+  </entry>
   
   <entry>
     <title>2020-03-27</title>

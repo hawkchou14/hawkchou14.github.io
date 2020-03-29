@@ -3,6 +3,48 @@
 
 
     <url>
+        <loc>https://hawkchou14.github.io/tags/ntp/</loc>
+        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/Linux/</loc>
+        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/diary/</loc>
+        <lastmod>2020-03-29T04:33:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/tuning/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/tcp/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/tsm/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/tags/font/</loc>
         <lastmod>2020-03-27T23:59:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,13 +61,6 @@
     <url>
         <loc>https://hawkchou14.github.io/tags/hexo/</loc>
         <lastmod>2020-03-27T23:59:49.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/diary/</loc>
-        <lastmod>2020-03-27T23:24:25.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

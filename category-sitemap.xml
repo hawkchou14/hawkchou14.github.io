@@ -8,15 +8,36 @@
     </url>
 
     <url>
-        <loc>https://hawkchou14.github.io/categories/hexo/</loc>
-        <lastmod>2020-03-27T23:59:49.000Z</lastmod>
+        <loc>https://hawkchou14.github.io/categories/Linux/</loc>
+        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://hawkchou14.github.io/categories/Diary/</loc>
-        <lastmod>2020-03-27T23:24:25.000Z</lastmod>
+        <lastmod>2020-03-29T04:33:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/categories/Middleware/TSM/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/categories/Middleware/</loc>
+        <lastmod>2020-03-29T02:17:14.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/categories/hexo/</loc>
+        <lastmod>2020-03-27T23:59:49.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
