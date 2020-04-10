@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://hawkchou14.github.io/tags/hachintosh/</loc>
+        <lastmod>2020-04-10T16:14:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/macOS/</loc>
+        <lastmod>2020-04-10T16:14:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/tags/rsh/</loc>
         <lastmod>2020-04-10T04:13:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,20 +26,6 @@
     <url>
         <loc>https://hawkchou14.github.io/tags/linux/</loc>
         <lastmod>2020-04-10T04:13:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/hachintosh/</loc>
-        <lastmod>2020-04-10T02:06:58.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/macOS/</loc>
-        <lastmod>2020-04-10T02:06:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
