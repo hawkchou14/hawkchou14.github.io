@@ -8,8 +8,32 @@
     </url>
 
     <url>
+        <loc>https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/</loc>
+        <lastmod>2020-04-10T01:57:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/04/08/hexo-table/</loc>
+        <lastmod>2020-04-08T01:32:03.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/2020/04/06/my-osx/</loc>
+        <lastmod>2020-04-07T22:09:46.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/2020/03/29/linux-ntp/</loc>
-        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
+        <lastmod>2020-03-29T09:14:09.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

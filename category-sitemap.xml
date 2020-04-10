@@ -9,7 +9,21 @@
 
     <url>
         <loc>https://hawkchou14.github.io/categories/Linux/</loc>
-        <lastmod>2020-03-29T07:46:50.000Z</lastmod>
+        <lastmod>2020-04-10T01:57:45.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/categories/Hexo/</loc>
+        <lastmod>2020-04-08T01:32:03.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/categories/macOS/</loc>
+        <lastmod>2020-04-07T22:09:46.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

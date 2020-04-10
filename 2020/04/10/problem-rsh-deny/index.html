@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"hawkchou14.github.io","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="PurpleStar Diary">
-<meta property="og:url" content="https://hawkchou14.github.io/archives/2020/03/page/2/index.html">
+  <meta name="description" content="Environment: CentOS6昨天處理了一個 rsh 的問題 原來是 Connection refuse安裝 rsh-server 後yum install rsh rsh-serverupdate &#x2F;etc&#x2F;securettyAdd rsh and rexec in the bottom of the fileserver xinetd restartservice iptables">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rsh 的 Permission Deny 問題">
+<meta property="og:url" content="https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/index.html">
 <meta property="og:site_name" content="PurpleStar Diary">
-<meta property="og:description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
+<meta property="og:description" content="Environment: CentOS6昨天處理了一個 rsh 的問題 原來是 Connection refuse安裝 rsh-server 後yum install rsh rsh-serverupdate &#x2F;etc&#x2F;securettyAdd rsh and rexec in the bottom of the fileserver xinetd restartservice iptables">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-04-10T01:49:34.000Z">
+<meta property="article:modified_time" content="2020-04-10T01:57:45.000Z">
 <meta property="article:author" content="Hawk Chou">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="rsh">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hawkchou14.github.io/archives/2020/03/page/2/">
+<link rel="canonical" href="https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>歸檔 | PurpleStar Diary</title>
+  <title>Rsh 的 Permission Deny 問題 | PurpleStar Diary</title>
   
 
 
@@ -194,79 +198,155 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post">
             
 
+  <div class="posts-expand">
+      
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hawk Chou">
+      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PurpleStar Diary">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rsh 的 Permission Deny 問題
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-04-10 09:49:34 / 修改時間：09:57:45" itemprop="dateCreated datePublished" datetime="2020-04-10T09:49:34+08:00">2020-04-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共有 15 篇文章。 繼續努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/04/10/problem-rsh-deny/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/10/problem-rsh-deny/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
+        <p>Environment: CentOS6<br>昨天處理了一個 rsh 的問題</p>
+<p>原來是 Connection refuse<br>安裝 rsh-server 後<br>yum install rsh rsh-server<br>update /etc/securetty<br>Add rsh and rexec in the bottom of the file<br>server xinetd restart<br>service iptables stop<br>應該 enable TCP 514 port 即可，先關掉測試一下。</p>
+<p>執行後就變成 rsh someone@server as root Permission Deny<br>Seems rsh deny became root user, no matter .rhosts specified?</p>
+<p>a <a href="">reference</a> to be verified today.<br>My problem was solved by:editing the file <code>/etc/pam.d/rsh</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#%PAM-1.0</span></span><br><span class="line"><span class="comment"># For root login to succeed here with pam_securetty, "rsh" must be</span></span><br><span class="line"><span class="comment"># listed in /etc/securetty.</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_nologin.so</span></span><br><span class="line">auth required /lib/security/pam_securetty.so</span><br><span class="line"><span class="comment">###auth required /lib/security/pam_env.so</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_rhosts_auth.so</span></span><br><span class="line">account required /lib/security/pam_stack.so service=system-auth</span><br><span class="line">session required /lib/security/pam_stack.so service=system-auth</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-24T07:13:25+08:00"
-              content="2020-03-24">
-          03-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/03/24/hexo-tag-cloud-howto/" itemprop="url">
-            <span itemprop="name">如何在 Hexo 的 Next theme 中建立 tagcloud</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-22T15:34:46+08:00"
-              content="2020-03-22">
-          03-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/03/22/hexo-create-deploy/" itemprop="url">
-            <span itemprop="name">無痛升級部落客 殺手級整合 HEXO NexT theme 與 Github 部署</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p><a href="https://wilsbur.pixnet.net/blog/post/20919166-轉貼：rsh以root登入" target="_blank" rel="noopener">Another Reference</a> Stated about the following modification.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8：到&#x2F;etc&#x2F;pam.d&#x2F;目录下，把rsh文件中的auth  required  pam_securetty.so一行用“#”封掉即可(注意修改红色字体一行：加＃)</span><br><span class="line">[root@hlht ~]# cd &#x2F;etc&#x2F;pam.d</span><br><span class="line">[root@hlht pam.d]# vi rsh</span><br><span class="line">#%PAM-1.0</span><br><span class="line"># For root login to succeed here with pam_securetty, &quot;rsh&quot; must be</span><br><span class="line"># listed in &#x2F;etc&#x2F;securetty.</span><br><span class="line">auth       required     pam_nologin.so</span><br><span class="line">#auth       required    pam_securetty.so</span><br><span class="line">auth       required     pam_env.so</span><br><span class="line">auth       required     pam_rhosts_auth.so</span><br><span class="line">account    required     pam_stack.so service&#x3D;system-auth</span><br><span class="line">session    required     pam_stack.so service&#x3D;system-auth</span><br></pre></td></tr></table></figure>
 
     </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感謝您的閱讀-------------</div>
+    
+</div>
+
+      
+    </div>
+    
+    
+    
+      
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Hawk Chou
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/" title="Rsh 的 Permission Deny 問題">https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/rsh/" rel="tag"># rsh</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/08/hexo-table/" rel="prev" title="hexo-table">
+      <i class="fa fa-chevron-left"></i> hexo-table
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2020/03/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/archives/2020/03/">1</a><span class="page-number current">2</span>
-  </nav>
-
 
 
           </div>
               
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -458,6 +538,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/";
+    this.page.identifier = "2020/04/10/problem-rsh-deny/";
+    this.page.title = "Rsh 的 Permission Deny 問題";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://PurpleStar.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>

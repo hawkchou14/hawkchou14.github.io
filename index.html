@@ -202,6 +202,329 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/04/10/problem-rsh-deny/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hawk Chou">
+      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PurpleStar Diary">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/10/problem-rsh-deny/" class="post-title-link" itemprop="url">Rsh 的 Permission Deny 問題</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-04-10 09:49:34 / 修改時間：09:57:45" itemprop="dateCreated datePublished" datetime="2020-04-10T09:49:34+08:00">2020-04-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/04/10/problem-rsh-deny/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/10/problem-rsh-deny/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Environment: CentOS6<br>昨天處理了一個 rsh 的問題</p>
+<p>原來是 Connection refuse<br>安裝 rsh-server 後<br>yum install rsh rsh-server<br>update /etc/securetty<br>Add rsh and rexec in the bottom of the file<br>server xinetd restart<br>service iptables stop<br>應該 enable TCP 514 port 即可，先關掉測試一下。</p>
+<p>執行後就變成 rsh someone@server as root Permission Deny<br>Seems rsh deny became root user, no matter .rhosts specified?</p>
+<p>a <a href="">reference</a> to be verified today.<br>My problem was solved by:editing the file <code>/etc/pam.d/rsh</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#%PAM-1.0</span></span><br><span class="line"><span class="comment"># For root login to succeed here with pam_securetty, "rsh" must be</span></span><br><span class="line"><span class="comment"># listed in /etc/securetty.</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_nologin.so</span></span><br><span class="line">auth required /lib/security/pam_securetty.so</span><br><span class="line"><span class="comment">###auth required /lib/security/pam_env.so</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_rhosts_auth.so</span></span><br><span class="line">account required /lib/security/pam_stack.so service=system-auth</span><br><span class="line">session required /lib/security/pam_stack.so service=system-auth</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://wilsbur.pixnet.net/blog/post/20919166-轉貼：rsh以root登入" target="_blank" rel="noopener">Another Reference</a> Stated about the following modification.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8：到&#x2F;etc&#x2F;pam.d&#x2F;目录下，把rsh文件中的auth  required  pam_securetty.so一行用“#”封掉即可(注意修改红色字体一行：加＃)</span><br><span class="line">[root@hlht ~]# cd &#x2F;etc&#x2F;pam.d</span><br><span class="line">[root@hlht pam.d]# vi rsh</span><br><span class="line">#%PAM-1.0</span><br><span class="line"># For root login to succeed here with pam_securetty, &quot;rsh&quot; must be</span><br><span class="line"># listed in &#x2F;etc&#x2F;securetty.</span><br><span class="line">auth       required     pam_nologin.so</span><br><span class="line">#auth       required    pam_securetty.so</span><br><span class="line">auth       required     pam_env.so</span><br><span class="line">auth       required     pam_rhosts_auth.so</span><br><span class="line">account    required     pam_stack.so service&#x3D;system-auth</span><br><span class="line">session    required     pam_stack.so service&#x3D;system-auth</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+    </div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/04/08/hexo-table/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hawk Chou">
+      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PurpleStar Diary">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/08/hexo-table/" class="post-title-link" itemprop="url">hexo-table</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-04-08 09:20:59 / 修改時間：09:32:03" itemprop="dateCreated datePublished" datetime="2020-04-08T09:20:59+08:00">2020-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/04/08/hexo-table/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/08/hexo-table/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Hexo 的表格不管是寫法或是呈現的方式有些不敢領教，本篇記錄優化的方式</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/08/hexo-table/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/04/06/my-osx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hawk Chou">
+      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PurpleStar Diary">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/06/my-osx/" class="post-title-link" itemprop="url">my-osx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-06 07:18:55" itemprop="dateCreated datePublished" datetime="2020-04-06T07:18:55+08:00">2020-04-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-04-08 06:09:46" itemprop="dateModified" datetime="2020-04-08T06:09:46+08:00">2020-04-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/macOS/" itemprop="url" rel="index"><span itemprop="name">macOS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/04/06/my-osx/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/06/my-osx/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>幾年錢組了一台 PC ，試著要讓家中有部電腦可以用</p>
+<p>那時候還沒有考慮清楚，(沒有做功課) 高高興興的買了以下的規格</p>
+<blockquote>
+<p>主機板 Gigabyte H270M-D3H<br>CPU: i7-<br>Memory: 8G * 2<br>GPU: Nvidia 1050</p>
+</blockquote>
+<p>就醬 零零總總也花了很多張小朋友。<br>剛開始安裝 Apple 的 OSX 時，執行的還蠻順利的，因為當時的 Nvidia 將 driver 釋放出來，<br>因此在臺式機可以安裝官方版的黑蘋果驅動程式，那時候是 10.13, 用了一陣子蠻方便的。</p>
+<p>後來升級到 10.14 後 Nvidia 就不再出官方版的 driver for macOS, 因此顯示卡就幾乎成了<br>該怎麼說呢？豬隊友吧。在 macOS 環境下綁手綁腳的 (讓開機速度變慢，設定上要將卡片排除，顯示要設定在主機板上，等等，讓我有陣子想要放際黑蘋果了)<br>還好在 Windows 的環境中發揮得蠻好的。幾乎快成為遊戲機了。</p>
+<p>最近系統又升級到 10.15 想再試試看黑蘋果的安裝。</p>
+<p>以前對於這些安裝作業都如數家珍，每個步驟也都暸若指掌，但是真的是年紀有了，要回想之前做個哪些設定，才能安裝成現在這個樣子，想了很久也還是想不起來。 開始寫 hexo 試著喚回點記憶。</p>
+<h2 id="緣-–-蘋果雖好，但是真的要讓太多小朋友離開我身邊"><a href="#緣-–-蘋果雖好，但是真的要讓太多小朋友離開我身邊" class="headerlink" title="緣 – 蘋果雖好，但是真的要讓太多小朋友離開我身邊"></a>緣 – 蘋果雖好，但是真的要讓太多小朋友離開我身邊</h2><p>當時組好電腦時的結論是 - 蘋果不是很貴，分析如下</p>
+<ol>
+<li>以當時的 iMac 27 來說約 5-6 W, (i5 CPU, 8G 沒有 SSD)</li>
+<li>一台 5K 螢幕就要 2W 多</li>
+<li>最簡單的版本組好電腦也要 2W 多</li>
+<li>要加買等效的音箱，視訊，鍵盤滑鼠也要算 1W (高檔一點) <h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><ul>
+<li>級數提升一等 (i5 -&gt; i7, 8G-&gt;16G, HDD-&gt; SSD)</li>
+<li>可安裝 Windows 作業系統切換 (不是虛擬方式進行)<h3 id="缺點"><a href="#缺點" class="headerlink" title="缺點"></a>缺點</h3></li>
+<li>機箱體積很大</li>
+<li>螢幕，音箱，視訊，喇吧，麥克風的線纏得到處都是</li>
+<li>需要花時間調教</li>
+<li>享受被電腦玩的樂趣，時間就在排爬文中快快地溜走。</li>
+</ul>
+</li>
+</ol>
+<p>但是身為資訊相關行業的人，可能也算是老手，老司機，就不被這些困難所阻擋要克服的決心。<br>只因為以前花在 M$ 的時間與這些相比，好像還不算什麼，唯一的差別是體力，視力與記憶力已不若當時。</p>
+<p>趁著要再升級的時候，紀錄一下黑蘋果在實作上的一些紀錄與相關的訊息</p>
+<p>要進入黑蘋果的世界 <a href="http://www.tonymacx86.com/" target="_blank" rel="noopener">tonymacx86</a> 完完全全是一個重要的資訊來源，網站中有詳列出一系列的硬體清單，小型機，大型機建議的主機板，CPU，顯卡等規格，可以參考一下需求來採購，另外也可以看一下討論串，有些人完成組裝後列出的規格，通常依這些規格來建置就不會被 <code>雷</code> 到。</p>
+<blockquote>
+<p>當時沒有看清楚之前提出的建議，顯卡選擇 Nvidia 的晶片，真的被雷打到了。</p>
+</blockquote>
+<p>由於 Apple 官方只有零售 10.12 版本的作業系統，因此在 <a href="http://www.tonymacx86.com/" target="_blank" rel="noopener">tonymacx86</a> 的網站都建議從 10.12 零售版的作業系統開始安裝。 但是大家知道就好了，不用說得這麼清楚。</p>
+<p>但是如果您已經是 Apple 電腦或筆電的使用者，在目前的系統還可以升級的狀況下，那您可以合法取得原廠的作業系統，進行我們想做的測試行為。</p>
+<p>因此我們有下列幾個工具必須要先準備好，也先了解一下安裝指引中的這些工具的用途</p>
+<ol>
+<li>ＵniBeast : 使用蘋果的這些技術開發者，常常會將開發的產品進行命名<br> 這個工具主要是將下載的作業系統程式安裝到 Clover 導引的 USB 中<br> 簡單的說，就是建立一支可以開機的 USB 進行安裝作業。這可以簡化安裝的第一步<br> 你要做的就是下載作業系統，下載 UniBeast 程式，放在檔案夾中，然後將 SIP disable 掉 ，<br> 執行 UniBeast 程式，根據程式的說明一直按下一步，在 30 分鐘作業的複製後， USB 就可以產生出來，也就可以開始進行安裝了。 但是這時還不要急著安裝，先完成下列的準備作業。</li>
+<li>ＭultiBeast: 在安裝完成後要進行的一些修改作業，讓 PC 可以模擬 Apple 原生硬體的環境，讓作業系統可以發揮完全的效能的工具。也就是說要利用這套工具載入一些驅動程式，來騙macOS 說你就是 Apple 的硬體，讓你的 PC 模擬為 Apple 硬體的環境。其中有包含各式晶片組的驅動程式，讓你的電腦的周邊可以載入到 macOS 中使用。這些驅動程式與參數的設定決定了安裝的相容程度。</li>
+<li>Clover Configurator : (簡稱 CC) 這是一套相當重要的設定組態工具</li>
+</ol>
+<h3 id="簡單的說明一下-Apple-開機的流程："><a href="#簡單的說明一下-Apple-開機的流程：" class="headerlink" title="簡單的說明一下 Apple 開機的流程："></a>簡單的說明一下 Apple 開機的流程：</h3><p>macOS 利用 EFI partition 進行開機作業，在黑蘋果中，常利用 Clover 作為開機的導引系統 （已包含在 UniBeast 與 MultiBeast 的安裝中) ，不需要另外安裝作業。這是一個 Type 為 <code>EFI</code> 的磁碟分割區 (partition) 蘋果的作業系統相關的參數與 driver 放在這個開機區中，隨著開機時一併載入系統中。 由於這個特殊的開機區被適當的隱藏，因此無法直接的讀取。</p>
+<p>所也我們會利用 CC (Clover Configurator) 來進行開機時，需要的參數的修改或是載入我們需要的驅動程式。</p>
+<p>開啟 CC 後，要先進行的作業就是 mount EFI 磁區，然後開啟這個磁區，在目錄結構中找到 config.plist 檔案進行修改，找到檔案後，利用 CC 開啟這個檔案，即可開始修改的作業。<br>修改的作業有些繁瑣，需要另外來介紹。<br>蘋果的驅動程式通成為 .exnt 為副檔名，將必要的檔案複製到 kext 目錄下即可。（這部分也可以利用 MultiBeast 來進行安裝，在 MultiBeast 選項中，選取所需的相容 kext driver 後，可以直接安裝到 EFI 隱藏磁區中)</p>
+<h3 id="因此總結一下安裝的流程："><a href="#因此總結一下安裝的流程：" class="headerlink" title="因此總結一下安裝的流程："></a>因此總結一下安裝的流程：</h3><p>利用 UniBeast 建立 開機的 USB<br>開始安裝系統，安裝完成後會重新開機，可能一到兩次，最後會出現第一次的開機引導程序 Hello, ….跟著導引完成後，就可以登入到系統中，這時候如果沒有驅動程式匹配的問題，就完成了黑蘋果的安裝。<br>但是通常不會這麼順利，因此開機 USB 中 的 MultiBeast 上場進行救援。啟動 MultiBeast 程式，選擇適合硬體的選項後，進行安裝。安裝完成後，再重新開機。黑蘋果就可以讓您享用了</p>
+<blockquote>
+<p>硬體越相容，要調整的作業就越少。</p>
+</blockquote>
+<p>至於 Clover ，幾乎忘了他的存在，直到….<br>安裝 Windows 與 升級的時候</p>
+<p>通常升級的時候會要求先將 Clover 升級到新的版本，可以利用 CC 直接進行，但是<br>他會將原來的設定與 driver 清掉，因此升級完成後要先將原來的 driver 複製回來。</p>
+<p>附註:<br>UniBeast 與 MultiBeast 可以再 tonymacx86 的 Download 區內下載 (先註冊)<br>Clover Configurator 可以再 SourceForge 中下載 (下載時會出現警訊，小心服用)</p>
+<p>升級 Catalina 失敗，升級完後遇到 bless 無法寫入磁區的錯誤。目前還卡著。<br>有一篇 Catalina 的文件說 MultiBeast 需要調整 [macOS Catalina Cleanup: Remove Kexts From /Library/Extensions and Recache](macOS Catalina Cleanup: Remove Kexts From /Library/Extensions and Recache), 但是並不是解決 bless 那個問題。<br>最壞的狀況就是重新 fresh new install Catalina</p>
+
+      
+    </div>
+
+    <div>
+      
+    </div>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/03/29/linux-ntp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,7 +550,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-03-29 15:27:34 / 修改時間：15:46:50" itemprop="dateCreated datePublished" datetime="2020-03-29T15:27:34+08:00">2020-03-29</time>
+              <time title="創建時間：2020-03-29 15:27:34 / 修改時間：17:14:09" itemprop="dateCreated datePublished" datetime="2020-03-29T15:27:34+08:00">2020-03-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -852,298 +1175,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/03/27/2020-03-26/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hawk Chou">
-      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PurpleStar Diary">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/27/2020-03-26/" class="post-title-link" itemprop="url">2020-03-26 小誌</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2020-03-27 07:02:56 / 修改時間：09:01:21" itemprop="dateCreated datePublished" datetime="2020-03-27T07:02:56+08:00">2020-03-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/03/27/2020-03-26/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/27/2020-03-26/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote class="blockquote-center">
-            <p><a href="#到南部工作">到南部工作</a><br><a href="#空氣依舊糟">空氣依舊糟</a><br><a href="#隔離">隔離</a><br><a href="#優退">優退</a></p>
-
-          </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/27/2020-03-26/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/03/24/hexo-external-fonts/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hawk Chou">
-      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PurpleStar Diary">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/24/hexo-external-fonts/" class="post-title-link" itemprop="url">修改 hexo 的字體設定 引用 Google Font 為外部字體</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-24 09:05:26" itemprop="dateCreated datePublished" datetime="2020-03-24T09:05:26+08:00">2020-03-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-03-28 07:59:49" itemprop="dateModified" datetime="2020-03-28T07:59:49+08:00">2020-03-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/03/24/hexo-external-fonts/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/24/hexo-external-fonts/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hexo NexT 已支援外部字型，目前以 google font 為來進行設置<br>由於剛開始使用的 NexT 與後來更新的版本不同，列出兩個版本的設定方式:</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/24/hexo-external-fonts/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://hawkchou14.github.io/2020/03/24/hexo-body-width/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Hawk Chou">
-      <meta itemprop="description" content="記憶是生活的一部分，包括生活與工作，隨著時間的流逝，一滴滴的記錄在生活的每一天，隨著時間的累積，美好的往事，一滴一滴地擠出了生命之中...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PurpleStar Diary">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/24/hexo-body-width/" class="post-title-link" itemprop="url">修改 hexo 的文件顯示寬度hexo-body-width</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-24 07:23:47" itemprop="dateCreated datePublished" datetime="2020-03-24T07:23:47+08:00">2020-03-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-03-27 06:58:41" itemprop="dateModified" datetime="2020-03-27T06:58:41+08:00">2020-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/03/24/hexo-body-width/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/24/hexo-body-width/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>next主題配置中，文章的兩側留白太多，每一行的文字太少，尤其是將字放大後，每行的字只剩下幾個，閱讀起來的感覺並不好。可通過修改next主題中頁面寬度來解決。</p>
-<p>後來升級到 NexT 7.x 版後發現只需要方法一的第二項 Layout Size 即可 </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/24/hexo-body-width/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1214,20 +1245,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -1249,7 +1280,7 @@
           <h4 class="widget-title" style="font-size:18px;text-align:center;color:#222;margin:20px 0 0px;">Tag Cloud</h4>
           <div id="myCanvasContainer" class="widget tagcloud" style="font-size:20px;">
               <canvas width="220" height="200" id="resCanvas" style="width=100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NexT/" rel="tag">NexT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/font/" rel="tag">font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntp/" rel="tag">ntp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/" rel="tag">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tsm/" rel="tag">tsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuning/" rel="tag">tuning</a><span class="tag-list-count">1</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NexT/" rel="tag">NexT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/font/" rel="tag">font</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/" rel="tag">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hachintosh/" rel="tag">hachintosh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntp/" rel="tag">ntp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsh/" rel="tag">rsh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/" rel="tag">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tsm/" rel="tag">tsm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tuning/" rel="tag">tuning</a><span class="tag-list-count">1</span></li></ul>
               </canvas>
           </div>
       </div>
