@@ -417,7 +417,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-04-08 06:09:46" itemprop="dateModified" datetime="2020-04-08T06:09:46+08:00">2020-04-08</time>
+                <time title="修改時間：2020-04-10 10:06:58" itemprop="dateModified" datetime="2020-04-10T10:06:58+08:00">2020-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -454,7 +454,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>幾年錢組了一台 PC ，試著要讓家中有部電腦可以用</p>
+          <p>幾年前組了一台 PC ，試著要讓家中有部電腦可以用</p>
 <p>那時候還沒有考慮清楚，(沒有做功課) 高高興興的買了以下的規格</p>
 <blockquote>
 <p>主機板 Gigabyte H270M-D3H<br>CPU: i7-<br>Memory: 8G * 2<br>GPU: Nvidia 1050</p>
@@ -488,7 +488,7 @@
 <p>但是如果您已經是 Apple 電腦或筆電的使用者，在目前的系統還可以升級的狀況下，那您可以合法取得原廠的作業系統，進行我們想做的測試行為。</p>
 <p>因此我們有下列幾個工具必須要先準備好，也先了解一下安裝指引中的這些工具的用途</p>
 <ol>
-<li>ＵniBeast : 使用蘋果的這些技術開發者，常常會將開發的產品進行命名<br> 這個工具主要是將下載的作業系統程式安裝到 Clover 導引的 USB 中<br> 簡單的說，就是建立一支可以開機的 USB 進行安裝作業。這可以簡化安裝的第一步<br> 你要做的就是下載作業系統，下載 UniBeast 程式，放在檔案夾中，然後將 SIP disable 掉 ，<br> 執行 UniBeast 程式，根據程式的說明一直按下一步，在 30 分鐘作業的複製後， USB 就可以產生出來，也就可以開始進行安裝了。 但是這時還不要急著安裝，先完成下列的準備作業。</li>
+<li>UniBeast : 使用蘋果的這些技術開發者，常常會將開發的產品進行命名<br> 這個工具主要是將下載的作業系統程式安裝到 Clover 導引的 USB 中<br> 簡單的說，就是建立一支可以開機的 USB 進行安裝作業。這可以簡化安裝的第一步<br> 你要做的就是下載作業系統，下載 UniBeast 程式，放在檔案夾中，然後將 SIP disable 掉 ，<br> 執行 UniBeast 程式，根據程式的說明一直按下一步，在 30 分鐘作業的複製後， USB 就可以產生出來，也就可以開始進行安裝了。 但是這時還不要急著安裝，先完成下列的準備作業。</li>
 <li>ＭultiBeast: 在安裝完成後要進行的一些修改作業，讓 PC 可以模擬 Apple 原生硬體的環境，讓作業系統可以發揮完全的效能的工具。也就是說要利用這套工具載入一些驅動程式，來騙macOS 說你就是 Apple 的硬體，讓你的 PC 模擬為 Apple 硬體的環境。其中有包含各式晶片組的驅動程式，讓你的電腦的周邊可以載入到 macOS 中使用。這些驅動程式與參數的設定決定了安裝的相容程度。</li>
 <li>Clover Configurator : (簡稱 CC) 這是一套相當重要的設定組態工具</li>
 </ol>
@@ -503,6 +503,7 @@
 <p>通常升級的時候會要求先將 Clover 升級到新的版本，可以利用 CC 直接進行，但是<br>他會將原來的設定與 driver 清掉，因此升級完成後要先將原來的 driver 複製回來。</p>
 <p>附註:<br>UniBeast 與 MultiBeast 可以再 tonymacx86 的 Download 區內下載 (先註冊)<br>Clover Configurator 可以再 SourceForge 中下載 (下載時會出現警訊，小心服用)</p>
 <p>升級 Catalina 失敗，升級完後遇到 bless 無法寫入磁區的錯誤。目前還卡著。<br>有一篇 Catalina 的文件說 MultiBeast 需要調整 [macOS Catalina Cleanup: Remove Kexts From /Library/Extensions and Recache](macOS Catalina Cleanup: Remove Kexts From /Library/Extensions and Recache), 但是並不是解決 bless 那個問題。<br>最壞的狀況就是重新 fresh new install Catalina</p>
+<p>最後更新，升級沒有失敗，選錯開機的選項了，花了很多時間確認。在升級前先升級 Clover , 直接在 UniBeast 中升級，<br>然後重新開機，確認沒有問題後再進行 Catalina 的升級，由於升級完成 Clover 後，開機選項被更新為預設，因此變成大的 icon,<br>正常的開機被擠到畫面外，必須按右鍵捲動後才會出現，解決了問題，但是顯示明顯有點鈍。應該要找替代的顯卡。</p>
 
       
     </div>
