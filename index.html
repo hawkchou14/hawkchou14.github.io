@@ -227,7 +227,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-04-10 09:49:34 / 修改時間：09:57:45" itemprop="dateCreated datePublished" datetime="2020-04-10T09:49:34+08:00">2020-04-10</time>
+              <time title="創建時間：2020-04-10 09:49:34 / 修改時間：12:13:33" itemprop="dateCreated datePublished" datetime="2020-04-10T09:49:34+08:00">2020-04-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,15 +264,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Environment: CentOS6<br>昨天處理了一個 rsh 的問題</p>
-<p>原來是 Connection refuse<br>安裝 rsh-server 後<br>yum install rsh rsh-server<br>update /etc/securetty<br>Add rsh and rexec in the bottom of the file<br>server xinetd restart<br>service iptables stop<br>應該 enable TCP 514 port 即可，先關掉測試一下。</p>
-<p>執行後就變成 rsh someone@server as root Permission Deny<br>Seems rsh deny became root user, no matter .rhosts specified?</p>
-<p>a <a href="">reference</a> to be verified today.<br>My problem was solved by:editing the file <code>/etc/pam.d/rsh</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#%PAM-1.0</span></span><br><span class="line"><span class="comment"># For root login to succeed here with pam_securetty, "rsh" must be</span></span><br><span class="line"><span class="comment"># listed in /etc/securetty.</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_nologin.so</span></span><br><span class="line">auth required /lib/security/pam_securetty.so</span><br><span class="line"><span class="comment">###auth required /lib/security/pam_env.so</span></span><br><span class="line"><span class="comment">###auth required /lib/security/pam_rhosts_auth.so</span></span><br><span class="line">account required /lib/security/pam_stack.so service=system-auth</span><br><span class="line">session required /lib/security/pam_stack.so service=system-auth</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://wilsbur.pixnet.net/blog/post/20919166-轉貼：rsh以root登入" target="_blank" rel="noopener">Another Reference</a> Stated about the following modification.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8：到&#x2F;etc&#x2F;pam.d&#x2F;目录下，把rsh文件中的auth  required  pam_securetty.so一行用“#”封掉即可(注意修改红色字体一行：加＃)</span><br><span class="line">[root@hlht ~]# cd &#x2F;etc&#x2F;pam.d</span><br><span class="line">[root@hlht pam.d]# vi rsh</span><br><span class="line">#%PAM-1.0</span><br><span class="line"># For root login to succeed here with pam_securetty, &quot;rsh&quot; must be</span><br><span class="line"># listed in &#x2F;etc&#x2F;securetty.</span><br><span class="line">auth       required     pam_nologin.so</span><br><span class="line">#auth       required    pam_securetty.so</span><br><span class="line">auth       required     pam_env.so</span><br><span class="line">auth       required     pam_rhosts_auth.so</span><br><span class="line">account    required     pam_stack.so service&#x3D;system-auth</span><br><span class="line">session    required     pam_stack.so service&#x3D;system-auth</span><br></pre></td></tr></table></figure>
-
+          <p>Environment: CentOS6<br>昨天處理了一個 rsh 的問題<br>原來的訊息是 Connection refuse<br>後來變為 as root 與 Permission Deny<br>前面可能是連線上的問題<br>後面可能是服務限制 root 使用的問題，<br>開始解謎吧</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/10/problem-rsh-deny/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
