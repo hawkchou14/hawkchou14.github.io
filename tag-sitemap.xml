@@ -3,15 +3,36 @@
 
 
     <url>
+        <loc>https://hawkchou14.github.io/tags/Hamilton/</loc>
+        <lastmod>2020-04-17T23:59:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/catalina/</loc>
+        <lastmod>2020-04-12T21:00:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/maxOS/</loc>
+        <lastmod>2020-04-12T21:00:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/tags/hachintosh/</loc>
-        <lastmod>2020-04-10T16:14:07.000Z</lastmod>
+        <lastmod>2020-04-12T03:42:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://hawkchou14.github.io/tags/macOS/</loc>
-        <lastmod>2020-04-10T16:14:07.000Z</lastmod>
+        <lastmod>2020-04-12T03:42:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
