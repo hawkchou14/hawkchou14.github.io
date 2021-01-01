@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://hawkchou14.github.io/2020/04/17/1-alexander-hamilton/</loc>
+        <lastmod>2021-01-01T10:22:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/2020/04/18/2-aaron-burr/</loc>
         <lastmod>2021-01-01T09:59:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +42,6 @@
     <url>
         <loc>https://hawkchou14.github.io/2020/04/08/hexo-table/</loc>
         <lastmod>2021-01-01T02:39:36.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/2020/04/17/1-alexander-hamilton/</loc>
-        <lastmod>2020-04-18T13:58:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
