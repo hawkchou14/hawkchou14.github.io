@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://hawkchou14.github.io/2020/04/29/19-yorktown/</loc>
+        <lastmod>2021-01-01T03:01:25.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/2020/03/22/hexo-create-deploy/</loc>
         <lastmod>2021-01-01T02:46:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +26,6 @@
     <url>
         <loc>https://hawkchou14.github.io/2020/04/08/hexo-table/</loc>
         <lastmod>2021-01-01T02:39:36.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/2020/04/29/19-yorktown/</loc>
-        <lastmod>2020-04-29T00:00:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
