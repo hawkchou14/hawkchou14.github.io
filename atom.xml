@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://hawkchou14.github.io/"/>
-  <updated>2021-01-01T05:10:03.000Z</updated>
+  <updated>2022-02-26T01:29:13.000Z</updated>
   <id>https://hawkchou14.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OSX MP3 Converter</title>
+    <link href="https://hawkchou14.github.io/2022/02/26/OSX-MP3-Converter/"/>
+    <id>https://hawkchou14.github.io/2022/02/26/OSX-MP3-Converter/</id>
+    <published>2022-02-26T01:28:08.000Z</published>
+    <updated>2022-02-26T01:29:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>很多事做過就忘記了，要做的時候要重新搜尋或重新回憶如何來處理。</p><p>今天就遇到了要把 AAC 格式的資料轉換成 MP3</p><p>以前在 Windows 的時代，隨處可下載的工具程式可以很快的完成作業，但是在 OSX 上，似<br>乎沒有那麼的簡單，因此又搜尋了一下大神，並做個紀錄，下此要再處理時就可以直接參考<br>了。</p><p>目前得到的方式有兩種：<br>利用 command 來處理，要安裝 ffmpeg 套件後進行轉檔作業，這個部分比較有難度，游擊&gt;在目前 High Sierra 上，很多套件不相容的狀況下，一直沒有完成的安裝。不過在新的電&gt;腦上並不會有這個限制。因此先略過。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;很多事做過就忘記了，要做的時候要重新搜尋或重新回憶如何來處理。&lt;/p&gt;
+&lt;p&gt;今天就遇到了要把 AAC 格式的資料轉換成 MP3&lt;/p&gt;
+&lt;p&gt;以前在 Windows 的時代，隨處可下載的工具程式可以很快的完成作業，但是在 OSX 上，似&lt;br&gt;乎沒有那麼的簡單，因此又搜尋
+      
+    
+    </summary>
+    
+    
+      <category term="macOS" scheme="https://hawkchou14.github.io/categories/macOS/"/>
+    
+    
+      <category term="macOS" scheme="https://hawkchou14.github.io/tags/macOS/"/>
+    
+      <category term="tips" scheme="https://hawkchou14.github.io/tags/tips/"/>
+    
+  </entry>
   
   <entry>
     <title>Yorktown</title>
@@ -224,7 +254,7 @@
     <link href="https://hawkchou14.github.io/2020/03/29/2020-03-29/"/>
     <id>https://hawkchou14.github.io/2020/03/29/2020-03-29/</id>
     <published>2020-03-29T04:28:32.000Z</published>
-    <updated>2020-03-29T04:33:01.000Z</updated>
+    <updated>2020-03-29T13:54:37.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote class="blockquote-center">            <p><a href="#整理">整理</a></p>          </blockquote><a id="more"></a><h2 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h2><p>美好的星期日，需要發一些時間整理</p><ul><li>整理心情</li><li>整理環境</li><li>整理身體<br>但最後還是先整理工作的需求，先完成昨天未完的演練，以及要幫忙處理的系統。</li></ul>]]></content>
     
@@ -427,7 +457,7 @@
     <link href="https://hawkchou14.github.io/2020/03/24/hexo-body-width/"/>
     <id>https://hawkchou14.github.io/2020/03/24/hexo-body-width/</id>
     <published>2020-03-23T23:23:47.000Z</published>
-    <updated>2020-03-26T22:58:41.000Z</updated>
+    <updated>2021-01-01T02:35:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>next主題配置中，文章的兩側留白太多，每一行的文字太少，尤其是將字放大後，每行的字只剩下幾個，閱讀起來的感覺並不好。可通過修改next主題中頁面寬度來解決。</p><p>後來升級到 NexT 7.x 版後發現只需要方法一的第二項 Layout Size 即可 </p><a id="more"></a><h2 id="方法一-修改-post-expand-styl-與-base-styl"><a href="#方法一-修改-post-expand-styl-與-base-styl" class="headerlink" title="方法一 : 修改 post-expand.styl 與 base.styl"></a>方法一 : 修改 post-expand.styl 與 base.styl</h2><p>1.打開<code>\themes\next\source\css\_common\components\post\post-expand.styl</code>，找到: </p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@media (max-width: 767px)</span><br></pre></td></tr></table></figure><p>修改為:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@media (max-width: 1080px)</span><br></pre></td></tr></table></figure><p>2.修改 Layout Size<br>打開 <code>\themes\next\source\css\_variables\base.styl</code> 文件，找到:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$main</span>-desktop                   = 960px</span><br><span class="line"><span class="variable">$main</span>-desktop-large             = 1200px</span><br><span class="line"><span class="variable">$content</span>-desktop                = 700px</span><br></pre></td></tr></table></figure><p>修改為:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$main</span>-desktop                   = 1080px</span><br><span class="line"><span class="variable">$main</span>-desktop-large             = 1200px</span><br><span class="line"><span class="variable">$content</span>-desktop                = 810px</span><br></pre></td></tr></table></figure><p>NexT 7.x 調整方式<br>將原來的直各加上 200 並依自己的環境調整：<br>其他已經會自行計算出來</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$content</span>-desktop                = 800px;</span><br><span class="line"><span class="variable">$content</span>-desktop-large          = 900px;</span><br><span class="line"><span class="variable">$content</span>-desktop-largest        = 1100px;</span><br></pre></td></tr></table></figure><p>之後再重新生產，頁面留白就會由 767px 變為1080px 。</p><h2 id="方法二-手動調整樣式-個人的設定"><a href="#方法二-手動調整樣式-個人的設定" class="headerlink" title="方法二: 手動調整樣式 (個人的設定)"></a>方法二: 手動調整樣式 (個人的設定)</h2><p>手動調整樣式，可以得到較好的效果, 先確認使用的 schemes 為 Picses，或根據自己的設定調整。<br>‘\themes\next\source/css/_schemes/Picses/_layout.styl’ 文件末尾加入樣式設定如下</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 以下為新增代碼！！修改post寬度</span><br><span class="line">header&#123; width: 80% !important; &#125;</span><br><span class="line">header.post-header &#123;</span><br><span class="line">  width: auto !important;</span><br><span class="line">&#125;</span><br><span class="line">.container .main-inner &#123; width: 80%; &#125;</span><br><span class="line">.content-wrap &#123; width: calc(100% - 260px); &#125;</span><br><span class="line"></span><br><span class="line">.header &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.container .main-inner &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: auto !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.content-wrap &#123;</span><br><span class="line">  +<span class="function"><span class="title">tablet</span></span>() &#123;</span><br><span class="line">    width: 100% !important;</span><br><span class="line">  &#125;</span><br><span class="line">  +<span class="function"><span class="title">mobile</span></span>() &#123;</span><br><span class="line">    width: 100% !important;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Reference:<br><a href="https://ihaoming.top/archives/9a935f57.html" target="_blank" rel="noopener">法一</a><br><a href="https://sluggishpj.github.io/blog/2017/10/14/修改NexTPisces主题样式/" target="_blank" rel="noopener">法二</a></p>]]></content>
     

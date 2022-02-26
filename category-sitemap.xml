@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://hawkchou14.github.io/categories/macOS/</loc>
+        <lastmod>2022-02-26T01:29:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/categories/Music/</loc>
         <lastmod>2021-01-01T10:22:40.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -22,13 +29,6 @@
     </url>
 
     <url>
-        <loc>https://hawkchou14.github.io/categories/macOS/</loc>
-        <lastmod>2020-04-12T21:00:33.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://hawkchou14.github.io/categories/Linux/</loc>
         <lastmod>2020-04-10T04:13:33.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -37,7 +37,7 @@
 
     <url>
         <loc>https://hawkchou14.github.io/categories/Diary/</loc>
-        <lastmod>2020-03-29T04:33:01.000Z</lastmod>
+        <lastmod>2020-03-29T13:54:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>OSX MP3 Converter</title>
+      <link href="/2022/02/26/OSX-MP3-Converter/"/>
+      <url>/2022/02/26/OSX-MP3-Converter/</url>
+      
+        <content type="html"><![CDATA[<p>很多事做過就忘記了，要做的時候要重新搜尋或重新回憶如何來處理。</p><p>今天就遇到了要把 AAC 格式的資料轉換成 MP3</p><p>以前在 Windows 的時代，隨處可下載的工具程式可以很快的完成作業，但是在 OSX 上，似<br>乎沒有那麼的簡單，因此又搜尋了一下大神，並做個紀錄，下此要再處理時就可以直接參考<br>了。</p><p>目前得到的方式有兩種：<br>利用 command 來處理，要安裝 ffmpeg 套件後進行轉檔作業，這個部分比較有難度，游擊&gt;在目前 High Sierra 上，很多套件不相容的狀況下，一直沒有完成的安裝。不過在新的電&gt;腦上並不會有這個限制。因此先略過。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> macOS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> macOS </tag>
+            
+            <tag> tips </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Yorktown</title>
       <link href="/2020/04/29/19-yorktown/"/>
       <url>/2020/04/29/19-yorktown/</url>
