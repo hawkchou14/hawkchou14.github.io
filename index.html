@@ -233,7 +233,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-02-27 10:49:20" itemprop="dateModified" datetime="2022-02-27T10:49:20+08:00">2022-02-27</time>
+                <time title="修改時間：2022-02-27 11:02:11" itemprop="dateModified" datetime="2022-02-27T11:02:11+08:00">2022-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,8 +273,11 @@
           <p>很多事做過就忘記了，要做的時候要重新搜尋或重新回憶如何來處理。</p>
 <p>今天就遇到了要把 AAC 格式的資料轉換成 MP3</p>
 <p>以前在 Windows 的時代，隨處可下載的工具程式可以很快的完成作業，但是在 OSX 上，似<br>乎沒有那麼的簡單，因此又搜尋了一下大神，並做個紀錄，下此要再處理時就可以直接參考<br>了。</p>
-<p>目前得到的方式有兩種：<br>利用 command 來處理，要安裝 ffmpeg 套件後進行轉檔作業，這個部分比較有難度，游擊&gt;在目前 High Sierra 上，很多套件不相容的狀況下，一直沒有完成的安裝。不過在新的電&gt;腦上並不會有這個限制。因此先略過。</p>
+<p>目前得到的方式有兩種：</p>
+<h2 id="第一種方式，安裝-Command-Line-Tools"><a href="#第一種方式，安裝-Command-Line-Tools" class="headerlink" title="第一種方式，安裝 Command Line Tools"></a>第一種方式，安裝 Command Line Tools</h2><p>利用 command 來處理，要安裝 ffmpeg 套件後進行轉檔作業，這個部分比較有難度，游擊&gt;在目前 High Sierra 上，很多套件不相容的狀況下，一直沒有完成的安裝。不過在新的電&gt;腦上並不會有這個限制。因此先略過。</p>
 <p>因此先安裝 brew, 然後利用 brew 安裝需要的套件 ffmpeg 然後利用命令列進行轉檔作業</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">input file : in.m4a</span><br><span class="line">output file: out.mp3</span><br><span class="line">ffmpeg -i in.m4a -codec:a libmp3lame -qscale:a 1 out.mp3</span><br></pre></td></tr></table></figure>
+<p>接下來寫個 script 將整批的資料進行轉檔作業即可。</p>
 <h2 id="第二種方式，安裝-APP"><a href="#第二種方式，安裝-APP" class="headerlink" title="第二種方式，安裝 APP"></a>第二種方式，安裝 APP</h2><p>稍微查詢了一下，目前找到 “Free Any MP3 Converter” 來進行轉檔作業，目前使用愉快。</p>
 
       
