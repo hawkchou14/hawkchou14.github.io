@@ -3,8 +3,15 @@
 
 
     <url>
-        <loc>https://hawkchou14.github.io/tags/NexT/</loc>
-        <lastmod>2022-02-27T02:41:23.000Z</lastmod>
+        <loc>https://hawkchou14.github.io/tags/tips/</loc>
+        <lastmod>2022-02-27T02:49:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/macOS/</loc>
+        <lastmod>2022-02-27T02:49:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -17,22 +24,15 @@
     </url>
 
     <url>
-        <loc>https://hawkchou14.github.io/tags/hexo/</loc>
+        <loc>https://hawkchou14.github.io/tags/NexT/</loc>
         <lastmod>2022-02-27T02:41:23.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://hawkchou14.github.io/tags/tips/</loc>
-        <lastmod>2022-02-26T01:29:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/macOS/</loc>
-        <lastmod>2022-02-26T01:29:13.000Z</lastmod>
+        <loc>https://hawkchou14.github.io/tags/hexo/</loc>
+        <lastmod>2022-02-27T02:41:23.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
