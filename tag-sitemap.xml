@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://hawkchou14.github.io/tags/NexT/</loc>
+        <lastmod>2022-02-27T02:41:23.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/github/</loc>
+        <lastmod>2022-02-27T02:41:23.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://hawkchou14.github.io/tags/hexo/</loc>
+        <lastmod>2022-02-27T02:41:23.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://hawkchou14.github.io/tags/tips/</loc>
         <lastmod>2022-02-26T01:29:13.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,27 +40,6 @@
     <url>
         <loc>https://hawkchou14.github.io/tags/Hamilton/</loc>
         <lastmod>2021-01-01T10:22:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/github/</loc>
-        <lastmod>2021-01-01T02:46:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/NexT/</loc>
-        <lastmod>2021-01-01T02:46:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://hawkchou14.github.io/tags/hexo/</loc>
-        <lastmod>2021-01-01T02:46:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
